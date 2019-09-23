@@ -5,8 +5,7 @@ class Weapon {
       (this.dmg = dmg),
       (this.rangePenalty = rangePenalty),
       (this.dmgAtRange = function(range) {
-        const rangeDif = Math.abs(range - this.range);
-        const rangeMod = rangeDif * rangePenalty;
+        const rangeMod = Math.abs(range - this.range) * rangePenalty;
         return this.dmg > rangeMod ? this.dmg - rangeMod : 0;
       });
   }
