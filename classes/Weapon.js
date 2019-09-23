@@ -4,7 +4,10 @@ class Weapon {
       (this.range = range),
       (this.dmg = dmg),
       (this.dmgAtRange = function(range) {
-        return dmg / (Math.abs(range - this.range) * 3);
+        const rangeMod = Math.abs(range - this.range) * 3;
+        return rangeMod ? dmg / rangeMod : dmg;
       });
   }
 }
+
+export default Weapon;
