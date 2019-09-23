@@ -1,0 +1,24 @@
+{
+  "name": "x-cli-game",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "test",
+    "start": "node -r esm app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Martsyalis/x-cli-game.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Martsyalis/x-cli-game/issues"
+  },
+  "homepage": "https://github.com/Martsyalis/x-cli-game#readme",
+  "dependencies": {
+    "esm": "^3.2.25",
+    "inquirer": "^7.0.0"
+  }
+}
