@@ -5,12 +5,20 @@ class Team {
       (this.roster = []),
       (this.setCaptain = function(captainName) {
         this.captain = this.roster.find(member => member.name === captainName);
-        return captain;
+        return this.captain;
+      }),
+      (this.addOperative = function(op) {
+        this.roster.push(op);
+      }),
+      (this.removeOperative = function(name) {
+        this.roster = this.roster.filter(op => op.name !== name);
       }),
       (this.attack = function(range) {
-        this.roster.reduce((acc, op) => {
+        return this.roster.reduce((acc, op) => {
           return acc + op.attack(range);
         }, this.captain.skills.tactical || 0);
       });
   }
 }
+
+export default Team;
