@@ -18,7 +18,13 @@ describe("Team Test", function() {
     assert.deepEqual(alpha.roster, [opMark, opJackob, opSteven]);
     assert.deepEqual(alpha.captain, opJackob);
   });
+
   it("performs an attack", function() {
     assert.equal(alpha.attack(3), 55);
+  });
+
+  it("removes an opperative", function() {
+    alpha.removeOperative("Steven");
+    assert.deepEqual(alpha.roster, [opMark, opJackob]);
   });
 });
