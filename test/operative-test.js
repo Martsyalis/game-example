@@ -20,4 +20,7 @@ describe("Operative Test", function() {
     op.upgradeSkill("tactical", 3);
     assert.equal(op.skills.tactical, 7);
   });
+  it("checks cost function", function() {
+    assert.equal(op.cost(), 173);
+  });
 });

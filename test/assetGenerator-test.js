@@ -12,6 +12,8 @@ describe("Tests generateWeapon function", function() {
     assert.equal(!!weapon.range, true);
     assert.equal(!!weapon.dmg, true);
     assert.equal(!!weapon.rangePenalty, true);
+    assert.equal(typeof weapon.cost(), "number");
+    assert.equal(weapon.cost() > 0, true);
   });
 });
 
@@ -25,5 +27,9 @@ describe("Tests generateOp function", function() {
   });
   it("checks that attack functions gives a positive integer ", function() {
     assert.equal(Number.isInteger(op.attack(3)), true);
+  });
+  it("checks that cost function gives a positive integer ", function() {
+    assert.equal(Number.isInteger(op.cost()), true);
+    assert.equal(op.cost() >= 0, true);
   });
 });

@@ -3,10 +3,9 @@ import Weapon from "../classes/Weapon";
 import Operative from "../classes/Operative";
 import Team from "../classes/Team";
 
-
 let team;
 
-function CreateTeam() {
+function createTeam() {
   inquirer
     .prompt([
       {
@@ -14,14 +13,18 @@ function CreateTeam() {
         name: "name",
         message: "Please enter you new team's name"
       },
+      // {
+      //   type: "list",
+      //   name: "difficulty",
+      //   message: "Please select Difficulty",
+      //   choices: ["Easy", "Hard", "Nightmare"]
+      // },
       {
         type: "list",
-        name: "difficulty",
-        message: "Please select Difficulty",
-        choices: ["Easy", "Hard", "Nightmare"]
+        name 
       }
     ])
     .then(answers => {});
 }
 
-CreateTeam();
+createTeam();

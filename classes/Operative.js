@@ -31,6 +31,13 @@ class Operative {
           range;
         const totalDmg = weapon.dmgAtRange(range) + dmgFromSkills;
         return totalDmg;
+      }),
+      (this.cost = function() {
+        let skillCosts = Object.values(this.skills).reduce(
+          (cost, skill) => cost + skill * 5,
+          0
+        );
+        return skillCosts + this.hp + this.weapon.cost();
       });
   }
 }
