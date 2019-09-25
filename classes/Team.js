@@ -1,6 +1,7 @@
 class Team {
-  constructor(name) {
+  constructor(name, credits) {
     (this.name = name),
+      (this.credits = credits),
       (this.captain = {}),
       (this.roster = []),
       (this.setCaptain = function(captainName) {
@@ -17,6 +18,16 @@ class Team {
         return this.roster.reduce((acc, op) => {
           return acc + op.attack(range);
         }, this.captain.skills.tactical || 0);
+      }),
+      (this.spendCredits = function(cost) {
+        if (this.credits < cost) {
+          return "You dont have enough credits";
+        } else {
+          this.credits -= cost;
+        }
+      }),
+      (this.addCredits = function(profit) {
+        this.credits += profit;
       });
   }
 }
