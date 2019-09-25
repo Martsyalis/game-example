@@ -13,8 +13,22 @@ function generateWeapon() {
   );
 }
 
-function randomInRange(min, max) {
-  return Math.floor(Math.random() * max - min) + min;
+function generateOp() {
+  return new Operative(
+    dogNames.allRandom(),
+    randomInRange(20, 100),
+    0,
+    generateWeapon(),
+    randomInRange(1, 10),
+    randomInRange(1, 10),
+    randomInRange(1, 10),
+    randomInRange(1, 10),
+    randomInRange(1, 10)
+  );
 }
 
-export { generateWeapon };
+function randomInRange(min, max) {
+  return Math.floor(Math.random() * max) + min;
+}
+
+export { generateWeapon, generateOp };
