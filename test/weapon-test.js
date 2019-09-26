@@ -12,6 +12,6 @@ describe("Midium range weapon test", function() {
     assert.equal(dmg, 4);
   });
   it('checks the cost of the weapon', function(){
-    assert.equal(assault.cost(), 48);
+    assert.equal(assault.getCost(), 48);
   })
 });

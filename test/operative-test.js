@@ -21,6 +21,6 @@ describe("Operative Test", function() {
     assert.equal(op.skills.tactical, 7);
   });
   it("checks cost function", function() {
-    assert.equal(op.cost(), 173);
+    assert.equal(op.getCost(), 173);
   });
 });

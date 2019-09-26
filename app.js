@@ -25,12 +25,11 @@ function buyOps(team, opArray = []) {
   let opFilteredChoicesArray = opArray
     .map(op => ({
       name: op.name,
-      cost: op.cost()
+      cost: op.getCost()
     }))
     .filter(
       op => op.cost < team.credits && !teamRosterNameArray.includes(op.name)
     );
-  console.log("array is: ", opFilteredChoicesArray);
   inquirer
     .prompt([
       {
@@ -45,12 +44,13 @@ function buyOps(team, opArray = []) {
       const opObj = opArray.find(op => op.name === opName);
       console.log(`You selected ${
         opObj.name
-      } who costs ${opObj.cost()} and has ${opObj.hp} health. 
+      } who costs ${opObj.getCost()} and has ${opObj.hp} health. 
       \n His skills are: ${opObj.skills} \n and he carries a weapon named ${
         opObj.weapon.name
       } which has ${opObj.weapon.dmg} dmg with ${
         opObj.weapon.range
-      } range and ${opObj.weapon.rangePenalty} accurecy`);
+      } range and ${opObj.weapon.rangePenalty} accurecy`
+      );
       inquirer
         .prompt([
           {
@@ -58,14 +58,14 @@ function buyOps(team, opArray = []) {
             name: "confirm",
             message: `Do you want to purchase ${
               opObj.name
-            } for ${opObj.cost()}? you have ${team.credits} credits left`,
+            } for ${opObj.getCost()}? you have ${team.credits} credits left`,
             choices: ["yes", "go back"]
           }
         ])
         .then(({ confirm }) => {
           if (confirm === "yes") {
             team.addOperative(opObj);
-            team.spendCredits(opObj.cost());
+            team.spendCredits(opObj.getCost());
             opArray.slice(opArray.indexOf(opObj), 1);
           }
           buyOps(team, opArray);
