@@ -6,7 +6,6 @@ import { generateWeapon, generateOp } from "./assetGenerators";
 
 const difficultyArray = ["Nightmare", "Hard", "Recomended", "Easy"];
 
-// const team = new Team("Alpha", 900);
 startGame();
 
 async function startGame(team = "") {
@@ -94,4 +93,10 @@ function createTeam() {
       );
       return team;
     });
+}
+
+function baseMenu(team) {
+  return inquirer.prompt([{
+     
+  }])
 }
