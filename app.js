@@ -6,12 +6,15 @@ import { generateWeapon, generateOp } from "./assetGenerators";
 
 const difficultyArray = ["Nightmare", "Hard", "Recomended", "Easy"];
 
+// const team = new Team("Alpha", 900);
 startGame();
 
-async function startGame() {
-  const team = await createTeam();
-  // const team = new Team("Alpha", 900);
-  await buyOps(team);
+async function startGame(team = "") {
+  if (!team) {
+    team = await createTeam();
+    await buyOps(team);
+  }
+  console.log("starting a mission");
 }
 
 function buyOps(team, opArray = []) {
@@ -20,7 +23,6 @@ function buyOps(team, opArray = []) {
       opArray.push(generateOp());
     }
   }
-
   let teamRosterNameArray = team.roster.map(op => op.name);
   let opFilteredChoicesArray = opArray
     .map(op => ({
@@ -30,20 +32,22 @@ function buyOps(team, opArray = []) {
     .filter(
       op => op.cost < team.credits && !teamRosterNameArray.includes(op.name)
     );
-  inquirer
+  return inquirer
     .prompt([
       {
         type: "list",
         name: "opName",
         message:
           "Time to assemble your operatives. Select operative to view their details. Remember to spend your funds carefully!",
-        choices: opFilteredChoicesArray
+        choices: [...opFilteredChoicesArray, "return to base"]
       }
     ])
     .then(({ opName }) => {
+      if (opName === "return to base") return;
       const opObj = opArray.find(op => op.name === opName);
+      //print choice to console
       console.log(`${opObj.getInfo()}`);
-      inquirer
+      return inquirer
         .prompt([
           {
             type: "list",
@@ -60,7 +64,7 @@ function buyOps(team, opArray = []) {
             team.spendCredits(opObj.getCost());
             opArray.slice(opArray.indexOf(opObj), 1);
           }
-          buyOps(team, opArray);
+          return buyOps(team, opArray);
         });
     });
 }
