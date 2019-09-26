@@ -39,9 +39,17 @@ class Operative {
         );
         return skillCosts + this.hp + this.weapon.getCost();
       }),
-      this.getInfo = function(){
-
-      }
+      (this.getInfo = function() {
+        const basic = `Agent ${this.name} has ${
+          this.hp
+        } hp and costs ${this.getCost()} credits`;
+        let skills = `Their skills are: \n`;
+        for (let key in this.skills) {
+          skills += `${key}: ${this.skills[key]} \n`;
+        }
+        const weapon = `Their ${this.weapon.getInfo()}`;
+        return `${basic} \n ${skills} ${weapon}`;
+      });
   }
 }
 

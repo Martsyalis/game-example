@@ -42,15 +42,7 @@ function buyOps(team, opArray = []) {
     ])
     .then(({ opName }) => {
       const opObj = opArray.find(op => op.name === opName);
-      console.log(`You selected ${
-        opObj.name
-      } who costs ${opObj.getCost()} and has ${opObj.hp} health. 
-      \n His skills are: ${opObj.skills} \n and he carries a weapon named ${
-        opObj.weapon.name
-      } which has ${opObj.weapon.dmg} dmg with ${
-        opObj.weapon.range
-      } range and ${opObj.weapon.rangePenalty} accurecy`
-      );
+      console.log(`${opObj.getInfo()}`);
       inquirer
         .prompt([
           {

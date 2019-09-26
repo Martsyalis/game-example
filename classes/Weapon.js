@@ -10,6 +10,9 @@ class Weapon {
       }),
       (this.getCost = function() {
         return this.range * 2 + this.dmg * 6 - this.rangePenalty * 6;
+      }),
+      (this.getInfo = function() {
+        return `Weapon is called ${this.name} \n It has dmg of ${this.dmg} with ${this.range} range and ${this.rangePenalty} range penalty`;
       });
   }
 }
