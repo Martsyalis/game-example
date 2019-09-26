@@ -9,7 +9,7 @@ function generateWeapon() {
     catNames.random(),
     randomInRange(5, 30),
     randomInRange(1, 5),
-    randomInRange(5, 6)
+    randomInRange(1, 6)
   );
 }
 
@@ -28,7 +28,7 @@ function generateOp() {
 }
 
 function randomInRange(min, max) {
-  return Math.floor(Math.random() * max) + min;
+  return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
 export { generateWeapon, generateOp };
