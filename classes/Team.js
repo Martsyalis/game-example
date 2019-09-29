@@ -28,6 +28,18 @@ class Team {
       }),
       (this.addCredits = function(profit) {
         this.credits += profit;
+      }),
+      (this.takeDmg = function(dmg) {
+        const randomIndex = Math.floor(Math.random() * this.roster.length);
+        const randomOp = this.roster[randomIndex];
+        const hpLeft = trandomOp.takeHit();
+        console.log(`${randomOp.name} got hit, sustaining ${dmg} damage`);
+        if (hpLeft <= 0) {
+          this.roaster.splice(randomIndex, 1);
+          console.log(
+            ` the wound proved to be fatal and ${randomOp.name} drew their last breath`
+          );
+        }
       });
   }
 }

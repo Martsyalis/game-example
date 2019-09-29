@@ -13,7 +13,11 @@ async function startGame(team = "") {
     team = await createTeam();
     await buyOps(team);
   }
-  console.log("starting a mission");
+  startMission();
+}
+
+function startMission(){
+  
 }
 
 function buyOps(team, opArray = []) {

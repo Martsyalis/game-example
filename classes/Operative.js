@@ -50,6 +50,9 @@ class Operative {
         const weapon = `Their ${this.weapon.getInfo()}`;
         return `${basic} \n ${skills} ${weapon}`;
       });
+    this.takeHit = function(dmg) {
+      return this.health -= dmg;
+    };
   }
 }
 
